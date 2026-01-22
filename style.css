@@ -4,9 +4,7 @@
     --text-color: #333333;
     --white: #ffffff;
     --bg-gradient-start: #fff59d;
-    /* More visible yellow */
     --bg-gradient-end: #f48fb1;
-    /* More visible pink */
     --font-family: 'Montserrat', sans-serif;
 }
 
@@ -29,16 +27,6 @@ body {
     overflow-x: hidden;
 }
 
-/* ... (Skipping unchanged styles for brevity if possible, but tool requires robust context. 
-   I will focus on the specific changes requested in the Instruction) 
-   Actually, the tool replaces chunks. I need to be careful. 
-   I will replace the ROOT and content section separately if they are far apart, 
-   or just the content section if that's where the layout fix is.
-   The user asked for color theme too, which is at the top.
-   I will do two Replace calls or one large one? 
-   The file is small enough (300 lines). 
-   Let's do the Content Section fix first, then the Color fix.
-*/
 
 
 a {
@@ -59,7 +47,7 @@ img {
 /* Navigation */
 .main-header {
     background-color: var(--navbar-bg);
-    padding: 1.5rem 3rem;
+    padding: 1.2rem 3rem;
 }
 
 .navbar {
@@ -67,30 +55,27 @@ img {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    /* Full width */
-    max-width: none;
-    /* Remove constraint */
     padding: 0 1rem;
 }
 
 .nav-links {
     display: flex;
-    justify-content: center;
-    gap: 4rem;
-    /* Wider gap */
+    justify-content: space-evenly;
+    gap: 1.5rem;
+    align-items: center;
     flex: 1;
-    /* Take up space to center */
+    margin: 0 2rem;
 }
 
 .nav-item {
-    font-weight: 900;
+    font-weight: 700;
     text-transform: capitalize;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #000;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     font-family: 'Playfair Display', serif;
-    /* Matching font */
-    transition: color 0.3s;
+    transition: opacity 0.3s;
+    white-space: nowrap;
 }
 
 .nav-item:hover {
@@ -98,14 +83,21 @@ img {
 }
 
 .menu-icon-container {
-    display: block;
-    /* Visible on desktop as well */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: auto;
 }
 
 .menu-icon {
-    width: 35px;
-    /* Slightly larger */
+    width: 32px;
+    height: auto;
     cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.menu-icon:hover {
+    opacity: 0.8;
 }
 
 /* Hero Section */
@@ -118,13 +110,11 @@ img {
 .hero-section {
     display: flex;
     align-items: stretch;
-    /* Full height stretch */
     justify-content: space-between;
     min-height: 90vh;
     padding: 0;
-    /* Remove padding for full bleed */
     background: linear-gradient(90deg, var(--bg-gradient-start) 50%, transparent 50%);
-    /* Gradient only on left half visually, though overlay handles it */
+
     position: relative;
     overflow: hidden;
 }
@@ -136,12 +126,10 @@ img {
     flex-direction: column;
     justify-content: center;
     background: linear-gradient(90deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
-    /* actually, the gradient likely spans the whole page under the image, or just the left */
 }
 
 .hero-title {
     font-weight: 800;
-    /* Fluid font size: Minimum 2.5rem, Preferred 5vw, Max 4.5rem */
     font-size: clamp(2.5rem, 5vw, 4.5rem);
     text-transform: uppercase;
     margin-bottom: 2rem;
@@ -164,7 +152,6 @@ img {
 .hero-right {
     width: 50%;
     position: relative;
-    /* Prevent image overflow on zoom/resize issues */
     min-width: 0;
 }
 
@@ -174,29 +161,30 @@ img {
     object-fit: cover;
     display: block;
     box-shadow: none;
-    /* Remove shadow for full bleed */
 }
 
 /* UI Elements */
 .btn {
     display: inline-block;
+    width: fit-content;
     background-color: var(--primary-color);
     color: var(--white);
-    padding: 1rem 3.5rem;
+    padding: 0.6rem 1.8rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
     border: none;
-    font-weight: 600;
-    font-size: 1rem;
-    text-transform: uppercase;
     cursor: pointer;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+    box-shadow: none;
+    transition: opacity 0.2s ease;
 }
 
+
 .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+    opacity: 0.9;
+    transform: none; 
 }
+
 
 .btn-link {
     background: none;
@@ -210,7 +198,6 @@ img {
     color: #000;
     padding: 0;
     text-transform: capitalize;
-    /* Use capitalize as per image */
 }
 
 .arrow-icon {
@@ -225,23 +212,24 @@ img {
 /* Content Grid */
 .content-section {
     display: flex;
-    align-items: stretch;
-    justify-content: center;
-    padding: 3rem 8%;
-    gap: 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 8%;
+    gap: 3rem;
     margin-bottom: 4rem;
     max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
+    min-height: 500px;
 }
 
 .gallery-grid {
-    flex: 1.4;
+    flex: 0 0 45%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* Reduced height to make the sections smaller/compact */
-    grid-template-rows: 180px 180px;
+    grid-template-rows: 200px 200px;
     gap: 1.5rem;
+    height: fit-content;
 }
 
 .gallery-item {
@@ -255,7 +243,6 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Strict requirement: No pixelation/stretch */
     transition: transform 0.5s ease;
     display: block;
 }
@@ -281,17 +268,17 @@ img {
 
 /* Info Banner */
 .red-banner {
-    flex: 1;
-    /* Red box is narrower than the 2-col image block */
+    flex: 0 0 45%;
     background-color: var(--primary-color);
-    padding: 2.5rem;
-    /* Reduced padding */
+    padding: 3rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
     color: #000;
     position: relative;
     box-shadow: none;
+    min-height: 280px;
 }
 
 .banner-subtitle {
@@ -317,20 +304,21 @@ img {
 
 /* Media Queries */
 
-/* Tablet and Small Desktops (max-width: 1024px) */
+/* Tablet (max-width: 1024px) */
 @media (max-width: 1024px) {
+    .menu-icon-container {
+        display: block;
+    }
+
     .nav-links {
         display: none;
-        /* Hide full nav */
     }
 
     .hero-section {
         flex-direction: column-reverse;
-        /* Text bottom, image top for standard stacking */
         min-height: auto;
         padding-bottom: 3rem;
-        background: var(--bg-gradient-start);
-        /* Solid background, no split */
+        background: linear-gradient(90deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     }
 
     .hero-left,
@@ -338,19 +326,17 @@ img {
         width: 100%;
         padding: 3rem 5%;
         text-align: center;
-        background: transparent;
+        background: linear-gradient(90deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     }
 
     .hero-right {
         height: 50vh;
-        /* Fixed height for image area on tablet */
         padding: 0;
     }
 
     .hero-title {
         font-size: 3rem;
         white-space: normal;
-        /* Allow wrapping */
         margin-left: auto;
         margin-right: auto;
     }
@@ -360,27 +346,41 @@ img {
         margin-right: auto;
     }
 
-    /* Center the button */
     .hero-left {
         align-items: center;
     }
 
     .content-section {
         flex-direction: column;
-        padding: 2rem 5%;
-        gap: 2rem;
+        padding: 3rem 5%;
+        gap: 2.5rem;
+        min-height: auto;
     }
 
     .gallery-grid {
+        flex: 0 0 100%;
         width: 100%;
-        /* Keep grid layout but let it be full width */
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 180px 180px;
+        gap: 1.5rem;
+    }
+
+    .gallery-item img {
+        object-fit: cover;
+        /* Ensure no stretching */
     }
 
     .red-banner {
+        flex: 0 0 100%;
         width: 100%;
-        min-height: 300px;
-        align-items: center;
-        text-align: center;
+        min-height: 280px;
+        align-items: flex-start;
+        text-align: left;
+        padding: 2.5rem;
+    }
+
+    .banner-title {
+        font-size: 2.4rem;
     }
 }
 
@@ -388,6 +388,14 @@ img {
 @media (max-width: 768px) {
     .main-header {
         padding: 1rem 1.5rem;
+    }
+
+    .menu-icon-container {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
     }
 
     .hero-title {
@@ -399,60 +407,107 @@ img {
         height: 40vh;
     }
 
-    .gallery-grid {
-        /* Stack images on mobile or keep 2-col? 
-           Design typically stacks on very small screens. */
-        grid-template-columns: 1fr;
-        grid-template-rows: 250px 250px 250px;
-        /* Stacked squares */
+    .content-section {
+        padding: 2rem 4%;
+        gap: 1.5rem;
     }
 
-    /* Reset grid placement for single column */
+    .gallery-grid {
+        flex: 0 0 100%;
+        width: 100%;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 160px 160px;
+        gap: 1rem;
+    }
+
+    .gallery-item img {
+        object-fit: cover;
+    }
+
     .item-1 {
-        grid-column: auto;
-        grid-row: auto;
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
     }
 
     .item-2 {
-        grid-column: auto;
-        grid-row: auto;
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
     }
 
     .item-3 {
-        grid-column: auto;
-        grid-row: auto;
+        grid-column: 2 / 3;
+        grid-row: 1 / 3;
     }
 
     .red-banner {
-        padding: 3rem 1.5rem;
+        flex: 0 0 100%;
+        width: 100%;
+        padding: 2rem;
+        align-items: flex-start;
+        text-align: left;
+        min-height: 250px;
     }
 
     .banner-title {
-        font-size: 2.2rem;
+        font-size: 2rem;
+    }
+
+    .banner-subtitle {
+        font-size: 0.75rem;
     }
 }
 
 /* Small Mobile (max-width: 480px) */
 @media (max-width: 480px) {
     .hero-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .hero-right {
         height: 35vh;
     }
 
+    .hero-text {
+        font-size: 0.95rem;
+    }
+
     .content-section {
-        padding: 2rem 1rem;
+        padding: 1.5rem 3%;
+        gap: 1rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 140px 140px;
+        gap: 0.8rem;
+    }
+
+    .gallery-item img {
+        object-fit: cover;
+    }
+
+    .red-banner {
+        padding: 1.5rem;
+        min-height: 220px;
+        text-align: left;
     }
 
     .banner-title {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .banner-subtitle {
+        font-size: 0.7rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .btn-link {
+        font-size: 0.9rem;
     }
 
     .btn {
-        width: 100%;
-        /* Full width button on small mobile */
-        text-align: center;
+        padding: 0.8rem 2.5rem;
+        font-size: 0.9rem;
     }
 }
