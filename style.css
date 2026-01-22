@@ -209,41 +209,45 @@ img {
 .content-section {
     display: flex;
     align-items: stretch;
-    /* Both children stretch to same height */
-    padding: 3rem 5% 5rem 5%;
-    gap: 1.5rem;
-    margin-bottom: 4rem;
+    justify-content: center;
+    padding: 4rem 10%;
+    /* Increase side padding to center it more like a card */
+    /* meaningful gap in design step 0 seems to be 0 or very small between images, but gap between collage and red box? 
+       Actually looking at step 0, there is a gap between the image block and the red box. */
+    gap: 2rem;
+    margin-bottom: 5rem;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .gallery-grid {
-    flex: 1;
-    /* Equal width to banner */
+    flex: 1.2;
+    /* Make scrolling images slightly wider */
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    /* Dynamic height based on container */
-    gap: 1.5rem;
-    /* Match gap with other spacing */
+    grid-template-rows: 200px 200px;
+    /* Revert to fixed reasonable height to force landscape shape */
+    gap: 1rem;
 }
 
 .gallery-item {
     overflow: hidden;
     position: relative;
-    height: 100%;
-    /* Ensure item fills the grid cell */
     width: 100%;
+    height: 100%;
 }
 
 .gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
     display: block;
 }
 
 .gallery-item img:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .item-1 {
@@ -265,59 +269,102 @@ img {
 .red-banner {
     flex: 1;
     background-color: var(--primary-color);
-    padding: 3rem 4rem;
-    /* Reduced vertical padding */
+    padding: 2rem 3rem;
+    /* Tighter padding */
     display: flex;
     flex-direction: column;
     justify-content: center;
     color: #000;
     position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    /* Remove shadow to look flatter/cleaner like design */
+    box-shadow: none;
 }
 
 .banner-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 1rem;
-    display: block;
-    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    opacity: 0.8;
 }
 
 .banner-title {
-    font-size: 4rem;
-    /* Increased size */
+    font-size: 2.8rem;
+    /* Reduced from 4rem to prevent huge vertical stretching */
     font-weight: 900;
     text-transform: uppercase;
-    line-height: 0.95;
-    /* Tighter line height */
+    line-height: 1.1;
     margin-bottom: 2rem;
     letter-spacing: 1px;
 }
 
 /* Media Queries */
 
-/* Tablet (max-width: 1024px) */
+/* Tablet and Small Desktops (max-width: 1024px) */
 @media (max-width: 1024px) {
     .nav-links {
         display: none;
+        /* Hide full nav */
     }
 
-    .menu-icon-container {
-        display: block;
-        margin-left: auto;
+    .hero-section {
+        flex-direction: column-reverse;
+        /* Text bottom, image top for standard stacking */
+        min-height: auto;
+        padding-bottom: 3rem;
+        background: var(--bg-gradient-start);
+        /* Solid background, no split */
+    }
+
+    .hero-left,
+    .hero-right {
+        width: 100%;
+        padding: 3rem 5%;
+        text-align: center;
+        background: transparent;
+    }
+
+    .hero-right {
+        height: 50vh;
+        /* Fixed height for image area on tablet */
+        padding: 0;
     }
 
     .hero-title {
-        font-size: 3.5rem;
+        font-size: 3rem;
+        white-space: normal;
+        /* Allow wrapping */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-text {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Center the button */
+    .hero-left {
+        align-items: center;
     }
 
     .content-section {
         flex-direction: column;
+        padding: 2rem 5%;
+        gap: 2rem;
     }
 
     .gallery-grid {
-        grid-template-rows: 200px 200px;
+        width: 100%;
+        /* Keep grid layout but let it be full width */
+    }
+
+    .red-banner {
+        width: 100%;
+        min-height: 300px;
+        align-items: center;
+        text-align: center;
     }
 }
 
@@ -327,58 +374,69 @@ img {
         padding: 1rem 1.5rem;
     }
 
-    .hero-section {
-        flex-direction: column-reverse;
-        padding: 2rem 1.5rem;
-        text-align: center;
-    }
-
-    .hero-left {
-        padding-right: 0;
-        margin-top: 2rem;
+    .hero-title {
+        font-size: 2.5rem;
+        line-height: 1.2;
     }
 
     .hero-right {
-        justify-content: center;
+        height: 40vh;
     }
 
-    .hero-image {
-        max-width: 100%;
-        box-shadow: none;
+    .gallery-grid {
+        /* Stack images on mobile or keep 2-col? 
+           Design typically stacks on very small screens. */
+        grid-template-columns: 1fr;
+        grid-template-rows: 250px 250px 250px;
+        /* Stacked squares */
     }
 
-    .hero-title {
-        font-size: 2.8rem;
+    /* Reset grid placement for single column */
+    .item-1 {
+        grid-column: auto;
+        grid-row: auto;
     }
 
-    .content-section {
-        padding: 2rem 1.5rem;
-        margin-bottom: 2rem;
-        gap: 2rem;
+    .item-2 {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .item-3 {
+        grid-column: auto;
+        grid-row: auto;
     }
 
     .red-banner {
-        padding: 2rem;
+        padding: 3rem 1.5rem;
+    }
+
+    .banner-title {
+        font-size: 2.2rem;
     }
 }
 
 /* Small Mobile (max-width: 480px) */
 @media (max-width: 480px) {
     .hero-title {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 
-    .gallery-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
+    .hero-right {
+        height: 35vh;
     }
 
-    .gallery-item {
-        height: 250px;
+    .content-section {
+        padding: 2rem 1rem;
     }
 
     .banner-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        width: 100%;
+        /* Full width button on small mobile */
+        text-align: center;
     }
 }
