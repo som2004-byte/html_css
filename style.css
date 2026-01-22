@@ -367,7 +367,6 @@ img {
 
     .gallery-item img {
         object-fit: cover;
-        /* Ensure no stretching */
     }
 
     .red-banner {
