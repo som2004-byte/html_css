@@ -227,22 +227,20 @@ img {
     display: flex;
     align-items: stretch;
     justify-content: center;
-    padding: 4rem 5%;
-    /* Uniform gap for creating a single visual block */
+    padding: 3rem 8%;
     gap: 1.5rem;
-    margin-bottom: 5rem;
-    max-width: 1600px;
+    margin-bottom: 4rem;
+    max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .gallery-grid {
-    flex: 1.5;
-    /* Image block is wider */
+    flex: 1.4;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* Restoring taller stature as per 'Target' screenshot */
-    grid-template-rows: 240px 240px;
+    /* Reduced height to make the sections smaller/compact */
+    grid-template-rows: 180px 180px;
     gap: 1.5rem;
 }
 
@@ -286,7 +284,8 @@ img {
     flex: 1;
     /* Red box is narrower than the 2-col image block */
     background-color: var(--primary-color);
-    padding: 3rem;
+    padding: 2.5rem;
+    /* Reduced padding */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -296,17 +295,18 @@ img {
 }
 
 .banner-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
     font-weight: 700;
     opacity: 0.8;
 }
 
 .banner-title {
     /* Large, impactful font size */
-    font-size: 3.5rem;
+    font-size: 2.8rem;
+    /* Smaller font size */
     font-weight: 900;
     text-transform: uppercase;
     line-height: 1;
