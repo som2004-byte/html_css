@@ -141,7 +141,8 @@ img {
 
 .hero-title {
     font-weight: 800;
-    font-size: 4rem;
+    /* Fluid font size: Minimum 2.5rem, Preferred 5vw, Max 4.5rem */
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
     text-transform: uppercase;
     margin-bottom: 2rem;
     letter-spacing: 5px;
@@ -163,6 +164,8 @@ img {
 .hero-right {
     width: 50%;
     position: relative;
+    /* Prevent image overflow on zoom/resize issues */
+    min-width: 0;
 }
 
 .hero-image {
@@ -224,11 +227,9 @@ img {
     display: flex;
     align-items: stretch;
     justify-content: center;
-    padding: 4rem 8%;
-    /* Increase side padding to center it more like a card */
-    /* meaningful gap in design step 0 seems to be 0 or very small between images, but gap between collage and red box? 
-       Actually looking at step 0, there is a gap between the image block and the red box. */
-    gap: 2rem;
+    padding: 4rem 5%;
+    /* Uniform gap for creating a single visual block */
+    gap: 1.5rem;
     margin-bottom: 5rem;
     max-width: 1600px;
     margin-left: auto;
@@ -236,13 +237,13 @@ img {
 }
 
 .gallery-grid {
-    flex: 1.3;
-    /* Make scrolling images slightly wider */
+    flex: 1.5;
+    /* Image block is wider */
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 170px 170px;
-    /* Revert to fixed reasonable height to force landscape shape */
-    gap: 1rem;
+    /* Restoring taller stature as per 'Target' screenshot */
+    grid-template-rows: 240px 240px;
+    gap: 1.5rem;
 }
 
 .gallery-item {
@@ -256,6 +257,7 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    /* Strict requirement: No pixelation/stretch */
     transition: transform 0.5s ease;
     display: block;
 }
@@ -282,34 +284,34 @@ img {
 /* Info Banner */
 .red-banner {
     flex: 1;
+    /* Red box is narrower than the 2-col image block */
     background-color: var(--primary-color);
-    padding: 2rem;
-    /* Tighter padding */
+    padding: 3rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     color: #000;
     position: relative;
-    /* Remove shadow to look flatter/cleaner like design */
     box-shadow: none;
 }
 
 .banner-subtitle {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     font-weight: 700;
     opacity: 0.8;
 }
 
 .banner-title {
-    font-size: 2.5rem;
-    /* Reduced from 4rem to prevent huge vertical stretching */
+    /* Large, impactful font size */
+    font-size: 3.5rem;
     font-weight: 900;
     text-transform: uppercase;
     line-height: 1;
-    margin-bottom: 1.5rem;
+    /* Tight line height */
+    margin-bottom: 2rem;
     letter-spacing: 1px;
 }
 
