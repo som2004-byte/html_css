@@ -12,7 +12,6 @@
 </head>
 <body>
     
-    <!-- Navigation -->
     <header class="main-header">
         <nav class="navbar">
             <ul class="nav-links">
@@ -24,7 +23,7 @@
                 <li><a href="#" class="nav-item">Contact Us</a></li>
             </ul>
             <div class="menu-icon-container">
-                <img src="images/menu-bar.png" alt="Menu" class="menu-icon">
+                <img src="images/menu-bar.png" alt="Menu" class="menu-icon" id="menuToggle">
             </div>
         </nav>
     </header>
@@ -70,5 +69,20 @@
             </div>
         </section>
     </main>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
